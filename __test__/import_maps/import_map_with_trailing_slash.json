@@ -1,8 +1,8 @@
 {
   "imports": {
     "demo": "https://example.com/demo/",
-    "haha": "https://example.com/demo",
+    "haha": "https://example.com/haha",
     "demo/": "https://example.com/demo/",
-    "haha/": "https://example.com/demo"
+    "haha/": "https://example.com/haha"
   }
 }
