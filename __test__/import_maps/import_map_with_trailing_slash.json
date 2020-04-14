@@ -3,6 +3,8 @@
     "demo": "https://example.com/demo/",
     "haha": "https://example.com/haha",
     "demo/": "https://example.com/demo/",
-    "haha/": "https://example.com/haha"
+    "haha/": "https://example.com/haha",
+    "hoho": "https://example.com/hoho/mod.ts",
+    "hoho/": "https://example.com/hoho/"
   }
 }

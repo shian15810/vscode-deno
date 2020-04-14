@@ -60,7 +60,7 @@ export class ImportMap implements ImportMapInterface {
           (key.endsWith("/") && val.endsWith("/")) ||
           (!key.endsWith("/") && !val.endsWith("/"))
       )
-      .sort(([key1], [key2]) => key2.indexOf("/") - key1.indexOf("/"))
+      .sort(([key1], [key2]) => key2.lastIndexOf("/") - key1.lastIndexOf("/"))
       .reduce((imports, [key, value]) => ({ ...imports, [key]: value }), {});
 
     importMap.imports = imports;

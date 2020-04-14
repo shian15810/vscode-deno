@@ -88,6 +88,20 @@ test("core / import_map if imports field ends with a trailing slash", async () =
 
   expect(importMap.toJSON()).toEqual({
     "demo/": "https://example.com/demo/",
+    "hoho/": "https://example.com/hoho/",
     haha: "https://example.com/haha",
+    hoho: "https://example.com/hoho/mod.ts",
   });
+
+  expect(importMap.resolveModule("hoho")).toEqual(
+    "https://example.com/hoho/mod.ts"
+  );
+
+  expect(importMap.resolveModule("hoho/mod.ts")).toEqual(
+    "https://example.com/hoho/mod.ts"
+  );
+
+  expect(importMap.resolveModule("hoho/hoho.ts")).toEqual(
+    "https://example.com/hoho/hoho.ts"
+  );
 });
