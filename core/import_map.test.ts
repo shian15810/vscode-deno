@@ -75,3 +75,21 @@ test("core / import_map if imports field not an Object", async () => {
 
   expect(importMap.toJSON()).toEqual({});
 });
+
+test("core / import_map if imports field ends with trailing slash", async () => {
+  const mockWorkspaceDir = path.join(TEST_DIR, "import_maps");
+
+  const filepath = path.join(
+    mockWorkspaceDir,
+    "import_map_with_trailing_slash.json"
+  );
+
+  const importMap = ImportMap.create(filepath);
+
+  expect(importMap.toJSON()).toEqual({
+    imports: {
+      "demo/": "https://example.com/demo/",
+      haha: "https://example.com/demo",
+    },
+  });
+});

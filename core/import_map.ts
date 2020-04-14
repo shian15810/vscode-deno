@@ -54,6 +54,17 @@ export class ImportMap implements ImportMapInterface {
       }
     }
 
+    const imports = Object.entries(importMap.imports)
+      .filter(
+        ([key, val]) =>
+          (key.endsWith("/") && val.endsWith("/")) ||
+          (!key.endsWith("/") && !val.endsWith("/"))
+      )
+      .sort(([key1], [key2]) => key2.indexOf("/") - key1.indexOf("/"))
+      .reduce((imports, [key, value]) => ({ ...imports, [key]: value }), {});
+
+    importMap.imports = imports;
+
     return new ImportMap(importMap, importMapFilepath);
   }
   toJSON() {

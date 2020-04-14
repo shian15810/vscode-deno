@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "demo": "https://example.com/demo/",
+    "haha": "https://example.com/demo",
+    "demo/": "https://example.com/demo/",
+    "haha/": "https://example.com/demo"
+  }
+}
