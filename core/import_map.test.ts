@@ -86,12 +86,17 @@ test("core / import_map if imports field ends with a trailing slash", async () =
 
   const importMap = ImportMap.create(filepath);
 
-  expect(importMap.toJSON()).toEqual({
+  const imports = importMap.toJSON();
+
+  expect(imports).toEqual({
     "demo/": "https://example.com/demo/",
     "hoho/": "https://example.com/hoho/",
     haha: "https://example.com/haha",
     hoho: "https://example.com/hoho/mod.ts",
   });
+
+  // this test ensure that keys with trailing slash must be sorted at front.
+  expect(Object.keys(imports)).toEqual(["demo/", "hoho/", "haha", "hoho"]);
 
   expect(importMap.resolveModule("hoho")).toEqual(
     "https://example.com/hoho/mod.ts"
